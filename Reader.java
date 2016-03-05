@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 
 public class Reader{
 	private File folder;
@@ -22,5 +24,14 @@ public class Reader{
 		for(int i=0;i<fileNames.length;i++){
 			System.out.println( fileNames[i] );
 		}
+	}
+
+	public void goUp(){
+		if( this.folder.getParentFile() == null ){
+			this.folder = new File( folder.getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() );
+		} else {
+			this.folder = new File( folder.getAbsoluteFile().getParentFile().getAbsolutePath() );
+		}
+		showCurrentPath();
 	}
 }

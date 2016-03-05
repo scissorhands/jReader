@@ -5,14 +5,12 @@ public class jReader{
 		String path;
 		Menu menu = new Menu();
 		int selectedOption;
-
+		menu.showMainOptions();
 		while(!done){
-			menu.showMainOptions();
 			selectedOption = menu.chooseOption();
 			switch (selectedOption) {
 				case 1:
-					// reader.goUp();
-					reader.showCurrentPath();
+					reader.goUp();
 					break;
 				case 2:
 					// reader.setPath( menu.promptPath() );
@@ -20,6 +18,9 @@ public class jReader{
 					break;
 				case 3:
 					reader.readDir();
+					break;
+				case 9:
+					menu.showMainOptions();
 					break;
 				default:
 					menu.sayGoodBye();
