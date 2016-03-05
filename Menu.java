@@ -11,7 +11,7 @@ public class Menu{
 	public void showMainOptions(){
 		System.out.println("\nOptions:"
 			+"\n 1. Go up"
-			+"\n 2. Set path"
+			+"\n 2. Go to folder"
 			+"\n 3. Read current"
 			+"\n  "
 			+"\n Default: exit "
