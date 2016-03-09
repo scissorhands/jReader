@@ -1,9 +1,11 @@
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.File;
 
 public class Menu{
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	private int selection;
 
 	public Menu(){
 	}
@@ -16,6 +18,25 @@ public class Menu{
 			+"\n  "
 			+"\n Default: exit "
 		+"");
+	}
+
+	public File selectFolder(File[] files){
+		boolean isItDone;
+		isItDone = false;
+
+		while( !isItDone ){
+			System.out.println("Choose: " + files.length );
+			for(int i=0;i<files.length;i++){
+				if(files[i].isDirectory()){
+					System.out.println( "[ " + i + " ]  " + files[i].getName() );
+				}
+			}
+			selection = chooseOption();
+			if( selection >= 0 && selection < files.length ){
+				isItDone = true;
+			}
+		}
+		return files[selection];
 	}
 
 	public int chooseOption(){

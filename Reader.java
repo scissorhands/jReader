@@ -16,8 +16,25 @@ public class Reader{
 	}
 
 	public void showCurrentPath(){
-		System.out.println("Curren path " + this.folder.getAbsolutePath() );
+        System.out.println("Curren path " + this.folder.getAbsolutePath() );
 	}
+
+    public String getCurrentPath(){
+        try{
+            return this.folder.getCanonicalPath();
+        } catch ( IOException ioe ){
+            return this.folder.getAbsolutePath();
+        }
+    }
+
+	public File[] getChildren(){
+		return this.folder.listFiles();
+	}
+
+    public void setCurrentPath( String newPath ){
+        this.folder = new File( getCurrentPath() + "/" + newPath  );
+        showCurrentPath();
+    }
 
 	public void readDir(){
 		String[] fileNames = this.folder.list();

@@ -1,3 +1,5 @@
+import java.io.File;
+
 public class jReader{
 	public static void main(String[] args) {
 		Boolean done = false;
@@ -7,14 +9,14 @@ public class jReader{
 		int selectedOption;
 		menu.showMainOptions();
 		while(!done){
-			selectedOption = menu.chooseOption();
-			switch (selectedOption) {
-				case 1:
-					reader.goUp();
-					break;
-				case 2:
-					// reader.setPath( menu.promptPath() );
-					reader.showCurrentPath();
+            selectedOption = menu.chooseOption();
+            switch (selectedOption) {
+                case 1:
+                    reader.goUp();
+                    break;
+                case 2:
+                    File selectedFolder = menu.selectFolder( reader.getChildren() );
+                    reader.setCurrentPath( selectedFolder.getName() );
 					break;
 				case 3:
 					reader.readDir();
@@ -27,5 +29,5 @@ public class jReader{
 					done = true;
 			}
 		}
-	}
+    }
 }
