@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.File;
+import java.util.ArrayList;
 
 public class Menu{
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -23,12 +24,17 @@ public class Menu{
 	public File selectFolder(File[] files){
 		boolean isItDone;
 		isItDone = false;
+        int count = 0;
+        ArrayList<File> listFolders = new ArrayList<File>();
 
 		while( !isItDone ){
 			System.out.println("Choose: " + files.length );
+            count = 0;
 			for(int i=0;i<files.length;i++){
 				if(files[i].isDirectory()){
-					System.out.println( "[ " + i + " ]  " + files[i].getName() );
+					System.out.println( "[ " + count + " ]  " + files[i].getName() );
+                    listFolders.add( files[i] );
+                    count++;
 				}
 			}
 			selection = chooseOption();
@@ -36,7 +42,7 @@ public class Menu{
 				isItDone = true;
 			}
 		}
-		return files[selection];
+		return listFolders.get(selection);
 	}
 
 	public int chooseOption(){
