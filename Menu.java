@@ -16,9 +16,27 @@ public class Menu{
 			+"\n 1. Go up"
 			+"\n 2. Go to folder"
 			+"\n 3. Read current"
+            +"\n 4. Clean current directory"
 			+"\n  "
 			+"\n Default: exit "
 		+"");
+	}
+
+	public String askPath(){
+        String path = ".";
+		System.out.println("\nSet path?:"
+			+"\n 1. yes"
+			+"\n 2. no"
+		+"\n");
+		switch ( chooseOption() ){
+			case 1:
+				System.out.println("\nWrite path:\n");
+				path = readString();
+				break;
+			default:
+				break;
+		}
+        return path;
 	}
 
 	public File selectFolder(File[] files){
@@ -55,6 +73,17 @@ public class Menu{
 			System.out.println( "Error: " + nfe.toString() );
 		}
 		return i;
+	}
+
+	public String readString(){
+
+        String path = ".";
+        try{
+            path = br.readLine();
+        } catch( IOException e ){
+            System.out.println( "Error: " + e.getMessage() );
+        }
+		return path;
 	}
 
 	public void sayGoodBye(){
